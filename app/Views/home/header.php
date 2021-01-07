@@ -26,6 +26,12 @@ The above copyright notice and this permission notice shall be included in all c
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
     <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
+
+
+    <!-- Data Table -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css" />
+
+
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet" />
 </head>
@@ -43,31 +49,32 @@ The above copyright notice and this permission notice shall be included in all c
                 </a></div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
-                    <li class="nav-item active  ">
-                        <a class="nav-link" href="./dashboard.html">
+                    <li class="nav-item <?= $aktif == 'home' ? 'active' : ''; ?>">
+                        <a class="nav-link" href="home">
                             <i class="material-icons">dashboard</i>
                             <p>Home</p>
                         </a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="./user.html">
+                    <li class="nav-item <?= $aktif == 'customer' ? 'active' : ''; ?>">
+                        <a class="nav-link" href="<?= base_url('pelanggan'); ?>">
                             <i class="material-icons">person</i>
                             <p>Customer</p>
                         </a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="./tables.html">
+                    <li class="nav-item <?= $aktif == 'produk' ? 'active' : ''; ?> ">
+                        <a class="nav-link" href="<?= base_url('barang'); ?>">
                             <i class="material-icons">unarchive</i>
+                            <!-- <i class="">unarchive</i> -->
                             <p>Produk</p>
                         </a>
                     </li>
-                    <li class="nav-item ">
+                    <li class="nav-item <?= $aktif == 'transaksi' ? 'active' : ''; ?>">
                         <a class="nav-link" href="./notifications.html">
                             <i class="material-icons">point_of_sale</i>
                             <p>Transaksi</p>
                         </a>
                     </li>
-                    <li class="nav-item ">
+                    <li class="nav-item <?= $aktif == 'laporan' ? 'active' : ''; ?>">
                         <a class="nav-link" href="./rtl.html">
                             <i class="material-icons">content_paste</i>
                             <p>Laporan</p>
@@ -81,7 +88,7 @@ The above copyright notice and this permission notice shall be included in all c
             <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="javascript:;">Home</a>
+                        <a class="navbar-brand" href="javascript:;">Jahitan kami tidak hanya bikin anda jadi <span class="text-warning">TENTARA </span> tapi jadi <span class="text-warning">KSATRIA</span></a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="sr-only">Toggle navigation</span>

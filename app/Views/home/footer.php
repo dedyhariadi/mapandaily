@@ -44,9 +44,28 @@
 <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/demo/demo.js"></script>
+
+<!-- data table -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/b-1.6.5/b-colvis-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/datatables.min.js"></script>
+
+
 <script>
     $(document).ready(function() {
+
         $().ready(function() {
+
+            $('#tabel').DataTable({
+                paging: false,
+                // buttons: {
+                //     buttons: ['copy', 'csv', 'excel']
+                // }
+
+            });
+
+
+
             $sidebar = $('.sidebar');
 
             $sidebar_img_container = $sidebar.find('.sidebar-background');
