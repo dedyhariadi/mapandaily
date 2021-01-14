@@ -1,12 +1,34 @@
 <?php
 
 
-function tgltekstoangka($tglambil)
+function tglSimpan($tglambil)
 {
     $bulanangka = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+    // $bulanangka = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
     $bulan = explode(' ', $tglambil);
     $bulankirim = $bulanangka[array_search($bulan[1], BULANNAMA)];
-    return substr($tglambil, 0, 2) . $bulankirim . substr($tglambil, -2);
+    return substr($tglambil, -4) . '-' . $bulankirim . '-' . substr($tglambil, 0, 2);
+}
+
+
+if (!function_exists('tglTampil')) {
+    function tglTampil($date)
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        // array hari dan bulan
+        $Hari = array("Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu");
+        $Bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
+
+        // pemisahan tahun, bulan, hari, dan waktu
+        $tahun = substr($date, 0, 4);
+        $bulan = substr($date, 5, 2);
+        $tgl = substr($date, 8, 2);
+        $waktu = substr($date, 11, 5);
+        $hari = date("w", strtotime($date));
+        $result = $Hari[$hari] . ", " . $tgl . " " . $Bulan[(int)$bulan - 1] . " " . $tahun;
+
+        return $result;
+    }
 }
 
 function rupiah($angka)
@@ -17,11 +39,16 @@ function rupiah($angka)
     return $hasil_rupiah;
 }
 
-function telpon($angka)
+function telpon($telp)
 {
 
-    // $hasil_rupiah = "Rp " . number_format($angka, 2, ',', '.');
-    $hasil_telpon = number_format($angka, 0, ',', '.');
+    $banyak = strlen($telp);
+    $grup = $banyak / 3;
+    $hasil_telpon = "";
+    for ($h = 0; $h < $grup; $h++) :
+        $hasil_telpon =  $hasil_telpon . substr($telp, $h * 3, 3) . "&nbsp&nbsp&nbsp";
+    endfor;
+
     return $hasil_telpon;
 }
 

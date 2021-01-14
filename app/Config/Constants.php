@@ -39,6 +39,8 @@ defined('WEEK')   || define('WEEK', 604800);
 defined('MONTH')  || define('MONTH', 2592000);
 defined('YEAR')   || define('YEAR', 31536000);
 defined('DECADE') || define('DECADE', 315360000);
+defined('BULANNAMA') || define('BULANNAMA', ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]);
+
 
 /*
 |--------------------------------------------------------------------------

@@ -12,7 +12,6 @@
                                 <thead class="text-primary text-center">
 
                                     <th style="width:10%">
-
                                         No
                                     </th>
                                     <th style="width:40%">
@@ -76,20 +75,27 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="bmd-label-floating">Nama Barang</label>
-                                    <input type="text" name="namaPelanggan" value="<?= $pelangganPilih != '' ? $pelangganPilih['namaPelanggan'] : ''; ?>" class=" form-control">
+                                    <label class="bmd-label-floating">Nama Pelanggan</label>
+                                    <input type="text" name="namaPelanggan" autocomplete="off" value="<?= $pelangganPilih != '' ? $pelangganPilih['namaPelanggan'] : ''; ?>" class=" form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="bmd-label-floating">Telpon / HP</label>
-                                    <input type="text" name="telpon" value="<?= $pelangganPilih != '' ? $pelangganPilih['telpon'] : ''; ?>" class="form-control">
+                                    <input type="text" name="telpon" autocomplete="off" value="<?= $pelangganPilih != '' ? $pelangganPilih['telpon'] : ''; ?>" class="form-control">
                                 </div>
                             </div>
-                            <h4>
-                                <button type="button" class="btn btn-warning text-light">
+                            <!-- <h4> -->
+                            <div class="col">
+                                <?php
+                                echo form_submit('simpan', 'Simpan', ['class' => 'btn btn-primary float-left']);
+                                ?>
+                            </div>
+
+                            <!-- <button type="button" class="btn btn-warning text-light">
                                     <?php
-                                    echo form_submit('submit', 'simpan');
+
+                                    // echo form_submit('submit', 'simpan'); -->
                                     // echo anchor_popup(base_url('barang'), 'Simpan', ['class' => 'text-decoration-none text-light']);
                                     ?>
                                 </button>

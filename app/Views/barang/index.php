@@ -79,23 +79,20 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="bmd-label-floating">Nama Barang</label>
-                                    <input type="text" name="namaBarang" value="<?= $barangPilih != '' ? $barangPilih['namaBarang'] : ''; ?>" class=" form-control">
+                                    <input type="text" name="namaBarang" autocomplete="off" value="<?= $barangPilih != '' ? $barangPilih['namaBarang'] : ''; ?>" class=" form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="bmd-label-floating">Harga</label>
-                                    <input type="text" name="harga" value="<?= $barangPilih != '' ? $barangPilih['harga'] : ''; ?>" class="form-control">
+                                    <input type="text" name="harga" autocomplete="off" value="<?= $barangPilih != '' ? $barangPilih['harga'] : ''; ?>" class="form-control">
                                 </div>
                             </div>
-                            <h4>
-                                <button type="button" class="btn btn-warning text-light">
-                                    <?php
-                                    echo form_submit('submit', 'simpan');
-                                    // echo anchor_popup(base_url('barang'), 'Simpan', ['class' => 'text-decoration-none text-light']);
-                                    ?>
-                                </button>
-                            </h4>
+                            <div class="col">
+                                <?php
+                                echo form_submit('simpan', 'Simpan', ['class' => 'btn btn-primary float-left']);
+                                ?>
+                            </div>
                         </div>
 
                     </div>

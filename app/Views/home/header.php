@@ -14,31 +14,52 @@ The above copyright notice and this permission notice shall be included in all c
 
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <!-- <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png"> -->
+    <?php
+    // echo link_tag('assets/css/style.css');   //styleku
+    helper('html');
+    echo link_tag('assets/img/apple-icon.png', 'shortcut icon', 'image/png');
+    echo link_tag('assets/img/favicon.png', 'shortcut icon', 'image/png');
+
+
+
+    ?>
+    <!-- <link rel="icon" type="image/png" href="../assets/img/favicon.png"> -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
         Mapan Tailor
     </title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-    <!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    <!-- CSS Files -->
-    <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
+    <?php
+    // Fonts and icons    
+    echo link_tag('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons');
+    echo link_tag('https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css');
 
 
-    <!-- Data Table -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css" />
+    // CSS Files
+    echo link_tag(base_url('assets/css/material-dashboard.css?v=2.1.2'));
+
+    // Data Table
+
+    echo link_tag(base_url('https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css'));
 
 
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="../assets/demo/demo.css" rel="stylesheet" />
+    // CSS Just for demo purpose, don't include it in your project
+    echo link_tag('assets/demo/demo.css');
+
+    // jquery user inteface / tanggal
+
+    echo link_tag('assets/js/jquery-ui/jquery-ui.css');
+
+    // select2
+    echo link_tag('https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css');
+
+    ?>
 </head>
 
 <body class="">
     <div class="wrapper ">
-        <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+        <div class="sidebar" data-color="purple" data-background-color="white" data-image="<?= base_url('assets/img/sidebar-1.jpg'); ?>">
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -69,7 +90,7 @@ The above copyright notice and this permission notice shall be included in all c
                         </a>
                     </li>
                     <li class="nav-item <?= $aktif == 'transaksi' ? 'active' : ''; ?>">
-                        <a class="nav-link" href="./notifications.html">
+                        <a class="nav-link" href="<?= base_url('transaksi'); ?>">
                             <i class="material-icons">point_of_sale</i>
                             <p>Transaksi</p>
                         </a>

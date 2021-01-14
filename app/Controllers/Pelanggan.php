@@ -15,8 +15,6 @@ class Pelanggan extends BaseController
     public function index($idPelanggan = '')
     {
         helper('form');
-        echo "sukses";
-        // die;
         if ($this->request->getVar()) :
             $simpan = [
                 'idPelanggan' => $idPelanggan != '' ? $idPelanggan : '',
@@ -24,11 +22,12 @@ class Pelanggan extends BaseController
                 "telpon" => $this->request->getVar('telpon')
             ];
 
-            // d($simpan);
             $this->PelangganModel->save($simpan);
             $idPelanggan = '';
+        // dd($simpan);
         endif;
 
+        d($idPelanggan);
         $data = [
             'aktif' => "customer",
             'pelangganAll' => $this->PelangganModel->findAll(),
@@ -50,7 +49,4 @@ class Pelanggan extends BaseController
             echo "data gagal dihapus";
         endif;
     }
-
-    //--------------------------------------------------------------------
-
 }
