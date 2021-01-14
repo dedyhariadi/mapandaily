@@ -39,11 +39,11 @@
                                         Action
                                     </th>
 
-
                                 </thead>
                                 <tbody>
 
                                     <?php
+                                    helper("fungsiku");
                                     foreach ($transaksiAll as $nomor => $listTransaksi) :
                                     ?>
                                         <tr>
@@ -66,7 +66,7 @@
                                                 Total
                                             </td>
                                             <td>
-                                                <?= $listTransaksi['uangMuka']; ?>
+                                                <?= "Rp " . rupiah($listTransaksi['uangMuka']); ?>
                                             </td>
                                             <td class="text-center">
                                                 <h4> <span class="badge badge-danger"><?= $listTransaksi['namaStatusPesanan']; ?></span></h4>
