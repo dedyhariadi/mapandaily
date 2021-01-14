@@ -60,21 +60,19 @@
                                                 <?= $listTransaksi['tglSelesai']; ?>
                                             </td>
                                             <td>
-                                                <?= $listTransaksi['pelangganId']; ?>
+                                                <?= $listTransaksi['namaPelanggan']; ?>
+                                            </td>
+                                            <td>
+                                                Total
                                             </td>
                                             <td>
                                                 <?= $listTransaksi['uangMuka']; ?>
                                             </td>
-                                            <td>
-                                                <?= $listTransaksi['statusPesananId']; ?>
+                                            <td class="text-center">
+                                                <h4> <span class="badge badge-danger"><?= $listTransaksi['namaStatusPesanan']; ?></span></h4>
                                             </td>
 
-                                            <td class="text-right">
-                                                <?php
-                                                helper('fungsiku');
-                                                // echo telpon($listTransaksi['telpon']);
-                                                ?>
-                                            </td>
+
                                             <td class="text-center">
 
                                                 <a href="<?= base_url('transaksi/hapus') . '/' . $listTransaksi['idTransaksi']; ?>" <i class=" material-icons">delete</i><a>
