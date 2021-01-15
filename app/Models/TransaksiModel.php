@@ -13,9 +13,9 @@ class TransaksiModel extends Model
 
     protected $validationRules    = [
         'noNota'     => 'required|min_length[3]',
-        'email'        => 'required|valid_email|is_unique[users.email]',
-        'password'     => 'required|min_length[8]',
-        'pass_confirm' => 'required_with[password]|matches[password]'
+        // 'email'        => 'required|valid_email|is_unique[users.email]',
+        // 'password'     => 'required|min_length[8]',
+        // 'pass_confirm' => 'required_with[password]|matches[password]'
     ];
 
     protected $validationMessages = [
@@ -31,5 +31,13 @@ class TransaksiModel extends Model
         return $this->join('pelanggan', 'pelanggan.idPelanggan=transaksi.pelangganId', 'right')
             ->join('statusPesanan', 'statusPesanan.idStatusPesanan=transaksi.statusPesananId')
             ->findAll();
+    }
+
+    public function transaksiAllbyId($idTransaksi)
+    {
+
+        return $this->join('pelanggan', 'pelanggan.idPelanggan=transaksi.pelangganId', 'right')
+            ->join('statusPesanan', 'statusPesanan.idStatusPesanan=transaksi.statusPesananId')
+            ->find($idTransaksi);
     }
 }

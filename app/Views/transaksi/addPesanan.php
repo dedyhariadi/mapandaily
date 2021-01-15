@@ -102,9 +102,7 @@
 
                                                 <td class="text-center">
 
-                                                    <a href="" <i class=" material-icons">delete</i><a>
-
-
+                                                    <a href=""> <i class=" material-icons">delete</i><a>
                                                 </td>
 
                                             </tr>
@@ -120,7 +118,7 @@
                                                 </td>
                                                 <td class="text-left">
                                                     <div class="form-group">
-                                                        <select class="menuketik" name="barang" id="barang">
+                                                        <select class="menuketik" name="idBarang" id="barang">
 
                                                             <?php
                                                             foreach ($listBarang as $no => $barangAll) :
@@ -134,34 +132,25 @@
                                                 </td>
                                                 <td>
                                                     <div class="form-group">
-                                                        <label class="bmd-label-floating">Banyak</label>
-                                                        <input type="text" class="form-control">
+                                                        <label class="bmd-label-floating">Jumlah</label>
+                                                        <input type="text" name="jumlah" autocomplete="off" class="form-control">
                                                     </div>
                                                 </td>
 
                                                 <td>
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating" id="harga">Harga Satuan</label>
-                                                        <input type="text" class="form-control">
+                                                        <input type="text" name="hargaSatuan" autocomplete="off" class="form-control">
                                                     </div>
                                                 </td>
-                                                <!-- <td>
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control">
-                                                    </div>
-                                                </td> -->
+
                                                 <td colspan="2">
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Keterangan</label>
-                                                        <input type="text" class="form-control">
+                                                        <input type="text" name="keterangan" autocomplete="off" class="form-control">
                                                     </div>
                                                 </td>
 
-                                                <td class="text-center">
-
-
-
-                                                </td>
 
                                             </tr>
                                         </tbody>
@@ -170,7 +159,7 @@
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn btn-primary pull-right">Update Pesanan</button>
+                            <button type="submit" class="btn btn-primary pull-right">Tambahkan Pesanan</button>
                             <div class="clearfix"></div>
                         </form>
                     </div>

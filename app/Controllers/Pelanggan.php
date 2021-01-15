@@ -27,7 +27,7 @@ class Pelanggan extends BaseController
         // dd($simpan);
         endif;
 
-        d($idPelanggan);
+        // d($idPelanggan);
         $data = [
             'aktif' => "customer",
             'pelangganAll' => $this->PelangganModel->findAll(),

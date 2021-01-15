@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\TransaksiModel;
 use App\Models\PelangganModel;
 use App\Models\BarangModel;
+use App\Models\PesananModel;
 
 class Transaksi extends BaseController
 {
@@ -14,13 +15,11 @@ class Transaksi extends BaseController
         $this->TransaksiModel = new TransaksiModel();
         $this->PelangganModel = new PelangganModel();
         $this->BarangModel = new BarangModel();
+        $this->PesananModel = new PesananModel();
     }
 
     public function index($idTransaksi = '')
     {
-        helper('form');
-        echo "sukses";
-        // die;
         if ($this->request->getVar()) :
             $simpan = [
                 'idTransaksi' => $idTransaksi != '' ? $idTransaksi : '',
@@ -31,18 +30,13 @@ class Transaksi extends BaseController
                 "statusPesananId" => $this->request->getVar('statusPesananId'),
                 "keterangan" => $this->request->getVar('keterangan'),
             ];
-
-            // d($simpan);
             $this->TransaksiModel->save($simpan);
-            $idTransaksi = '';
         endif;
 
         $data = [
             'aktif' => "transaksi",
-
             'transaksiAll' => $this->TransaksiModel->orderBy('tglSelesai', 'desc')->findAll(),
-            'transaksiAll' => $this->TransaksiModel->transaksiAll(),
-            // 'pelangganPilih' => $idTransaksi != '' ? $this->TransaksiModel->find($idTransaksi) : ''
+            'transaksiAll' => $this->TransaksiModel->transaksiAll()
         ];
 
         echo view('home/header', $data);
@@ -52,7 +46,7 @@ class Transaksi extends BaseController
 
     public function hapus($idTransaksi = '')
     {
-        echo ($idTransaksi) ? $idTransaksi : '';
+        // echo ($idTransaksi) ? $idTransaksi : '';
         if ($this->TransaksiModel->delete($idTransaksi)) :
             echo "data berhasil dihapus";
             return redirect()->to(base_url('transaksi'));
@@ -72,7 +66,7 @@ class Transaksi extends BaseController
         echo view('home/footer');
     }
 
-    public function addpesanan($idTransaksi = '')
+    public function addpesanan()
     {
         $data = [
             'aktif' => "transaksi",
@@ -80,7 +74,6 @@ class Transaksi extends BaseController
             'listBarang' => $this->BarangModel->findAll(),
         ];
 
-        helper('fungsiku');
 
         if ($this->request->getVar('origin')) :
 
@@ -91,7 +84,6 @@ class Transaksi extends BaseController
             $idPelanggan = $this->request->getVar('pelanggan');
 
             $simpan = [
-                'idTransaksi' => $idTransaksi != '' ? $idTransaksi : '',
                 'noNota' => $this->request->getVar('noNota'),
                 "tglTerima" => $tglTerimaSimpan,
                 "tglSelesai" => $tglSelesaiSimpan,
@@ -100,13 +92,30 @@ class Transaksi extends BaseController
                 "statusPesananId" => "1",
                 "keterangan" => $this->request->getVar('keterangan'),
             ];
-            $this->TransaksiModel->save($simpan);
+            if (!$this->TransaksiModel->save($simpan)) :
+                dd($this->TransaksiModel->errors());
+            endif;
+            $idTransaksi = $this->TransaksiModel->insertID();
 
-            $idTransaksi = $idTransaksi == '' ? $this->TransaksiModel->insertID() : $idTransaksi;
 
 
         else :
-
+            d($this->request->getVar());
+            $idTransaksi = $this->request->getVar('idTransaksi');
+            $data += [
+                'aktif' => "transaksi",
+                'transaksiAll' => $this->TransaksiModel->transaksiAllbyId($idTransaksi)
+            ];
+            $simpanPesanan = [
+                'transaksiId' => $idTransaksi,
+                'barangId' => $this->request->getVar('idBarang'),
+                'jumlah' => $this->request->getVar('jumlah'),
+                'harga' => $this->request->getVar('hargaSatuan'),
+                'keterangan' => $this->request->getVar('keterangan')
+            ];
+            if (!$this->PesananModel->save($simpanPesanan)) :
+                echo "gagal menyimpan";
+            endif;
         // dari halaman add pesan
 
 
