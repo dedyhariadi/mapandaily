@@ -39,7 +39,9 @@ class Transaksi extends BaseController
 
         $data = [
             'aktif' => "transaksi",
+
             'transaksiAll' => $this->TransaksiModel->orderBy('tglSelesai', 'desc')->findAll(),
+            'transaksiAll' => $this->TransaksiModel->transaksiAll(),
             // 'pelangganPilih' => $idTransaksi != '' ? $this->TransaksiModel->find($idTransaksi) : ''
         ];
 

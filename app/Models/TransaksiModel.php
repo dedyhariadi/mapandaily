@@ -11,15 +11,25 @@ class TransaksiModel extends Model
     protected $primaryKey = "idTransaksi";
     protected $allowedFields = ['noNota', 'tglTerima', 'tglSelesai', 'pelangganId', 'uangMuka', 'statusPesananId', 'keterangan'];
 
-    // public function banyakMaterial($idMutasiBarang)
-    // {
-    //     // select count(*) as bnykmaterialambil,id_ambil,mutasiBarang_id from ambil left join trx_ambil on id_ambil=ambil_id group by id_ambil
+    protected $validationRules    = [
+        'noNota'     => 'required|min_length[3]',
+        'email'        => 'required|valid_email|is_unique[users.email]',
+        'password'     => 'required|min_length[8]',
+        'pass_confirm' => 'required_with[password]|matches[password]'
+    ];
 
-    //     return $this->join('trx_ambil', 'trx_ambil.ambil_id=ambil.id_ambil', 'left')
-    //         ->select('*')
-    //         ->selectCount('*', 'banyakMaterial')
-    //         ->groupBy('id_ambil')
-    //         ->where('mutasiBarang_id', $idMutasiBarang)
-    //         ->findAll();
-    // }
+    protected $validationMessages = [
+        'noNota'        => [
+            'required' => 'Sorry. nomor Nota harus diisi, tidak boleh kosong.',
+            'min_length' => 'maaf kurang panjang.'
+        ]
+    ];
+
+    public function transaksiAll()
+    {
+
+        return $this->join('pelanggan', 'pelanggan.idPelanggan=transaksi.pelangganId', 'right')
+            ->join('statusPesanan', 'statusPesanan.idStatusPesanan=transaksi.statusPesananId')
+            ->findAll();
+    }
 }

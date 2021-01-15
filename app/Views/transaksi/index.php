@@ -39,12 +39,11 @@
                                         Action
                                     </th>
 
-
                                 </thead>
                                 <tbody>
 
                                     <?php
-                                    helper('fungsiku');
+                                    helper("fungsiku");
                                     foreach ($transaksiAll as $nomor => $listTransaksi) :
                                     ?>
                                         <tr>
@@ -61,21 +60,19 @@
                                                 <?= tglTampil($listTransaksi['tglSelesai']); ?>
                                             </td>
                                             <td>
-                                                <?= $listTransaksi['pelangganId']; ?>
+                                                <?= $listTransaksi['namaPelanggan']; ?>
                                             </td>
                                             <td>
-                                                <?= $listTransaksi['uangMuka']; ?>
+                                                Total
                                             </td>
                                             <td>
-                                                <?= $listTransaksi['statusPesananId']; ?>
+                                                <?= "Rp " . rupiah($listTransaksi['uangMuka']); ?>
+                                            </td>
+                                            <td class="text-center">
+                                                <h4> <span class="badge badge-danger"><?= $listTransaksi['namaStatusPesanan']; ?></span></h4>
                                             </td>
 
-                                            <td class="text-right">
-                                                <?php
-                                                helper('fungsiku');
-                                                // echo telpon($listTransaksi['telpon']);
-                                                ?>
-                                            </td>
+
                                             <td class="text-center">
 
                                                 <a href="<?= base_url('transaksi/hapus') . '/' . $listTransaksi['idTransaksi']; ?>" <i class=" material-icons">delete</i><a>
