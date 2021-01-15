@@ -39,7 +39,7 @@ class Transaksi extends BaseController
 
         $data = [
             'aktif' => "transaksi",
-            'transaksiAll' => $this->TransaksiModel->findAll(),
+            'transaksiAll' => $this->TransaksiModel->orderBy('tglSelesai', 'desc')->findAll(),
             // 'pelangganPilih' => $idTransaksi != '' ? $this->TransaksiModel->find($idTransaksi) : ''
         ];
 
@@ -106,6 +106,7 @@ class Transaksi extends BaseController
         else :
 
         // dari halaman add pesan
+
 
         endif;
 

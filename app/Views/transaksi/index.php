@@ -44,6 +44,7 @@
                                 <tbody>
 
                                     <?php
+                                    helper('fungsiku');
                                     foreach ($transaksiAll as $nomor => $listTransaksi) :
                                     ?>
                                         <tr>
@@ -54,10 +55,10 @@
                                                 <?= $listTransaksi['noNota']; ?>
                                             </td>
                                             <td>
-                                                <?= $listTransaksi['tglTerima']; ?>
+                                                <?= tglTampil($listTransaksi['tglTerima']); ?>
                                             </td>
                                             <td>
-                                                <?= $listTransaksi['tglSelesai']; ?>
+                                                <?= tglTampil($listTransaksi['tglSelesai']); ?>
                                             </td>
                                             <td>
                                                 <?= $listTransaksi['pelangganId']; ?>
