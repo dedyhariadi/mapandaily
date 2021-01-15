@@ -78,34 +78,41 @@
 
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>
-                                                </td>
-                                                <td class="text-left">
-                                                    <div class="form-group">
+                                            <?php
+                                            if (isset($listPesanan)) :
+                                                foreach ($listPesanan as $nomor => $daftarPesanan) :
+                                            ?>
+                                                    <tr>
+                                                        <td>
+                                                            <?= $nomor + 1; ?>
+                                                        </td>
+                                                        <td class="text-left">
+                                                            <?= $daftarPesanan['barangId']; ?>
+                                                        </td>
+                                                        <td>
+                                                            <?= $daftarPesanan['jumlah']; ?>
+                                                        </td>
+                                                        <td>
+                                                            <?= $daftarPesanan['harga']; ?>
 
-                                                    </div>
-                                                </td>
-                                                <td>
+                                                        </td>
+                                                        <td>
+                                                            <?= $daftarPesanan['keterangan']; ?>
+                                                        </td>
+                                                        <td>
 
-                                                </td>
+                                                        </td>
 
-                                                <td>
+                                                        <td class="text-center">
 
-                                                </td>
-                                                <td>
+                                                            <a href=""> <i class=" material-icons">delete</i><a>
+                                                        </td>
 
-                                                </td>
-                                                <td>
-
-                                                </td>
-
-                                                <td class="text-center">
-
-                                                    <a href=""> <i class=" material-icons">delete</i><a>
-                                                </td>
-
-                                            </tr>
+                                                    </tr>
+                                            <?php
+                                                endforeach;
+                                            endif;
+                                            ?>
                                             <tr class="mt-5 py-5">
 
                                                 <td colspan="7">

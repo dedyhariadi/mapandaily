@@ -46,7 +46,6 @@ class Transaksi extends BaseController
 
     public function hapus($idTransaksi = '')
     {
-        // echo ($idTransaksi) ? $idTransaksi : '';
         if ($this->TransaksiModel->delete($idTransaksi)) :
             echo "data berhasil dihapus";
             return redirect()->to(base_url('transaksi'));
@@ -95,6 +94,7 @@ class Transaksi extends BaseController
             if (!$this->TransaksiModel->save($simpan)) :
                 dd($this->TransaksiModel->errors());
             endif;
+
             $idTransaksi = $this->TransaksiModel->insertID();
 
 
@@ -115,8 +115,12 @@ class Transaksi extends BaseController
             ];
             if (!$this->PesananModel->save($simpanPesanan)) :
                 echo "gagal menyimpan";
+                die;
             endif;
-        // dari halaman add pesan
+            // $id$this->PesananModel->insertID
+            $data += [
+                "listPesanan" => $this->PesananModel->where('transaksiId', $idTransaksi)->findAll()
+            ];
 
 
         endif;
