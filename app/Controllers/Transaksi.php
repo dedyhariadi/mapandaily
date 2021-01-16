@@ -110,7 +110,7 @@ class Transaksi extends BaseController
                 'transaksiId' => $idTransaksi,
                 'barangId' => $this->request->getVar('idBarang'),
                 'jumlah' => $this->request->getVar('jumlah'),
-                'harga' => $this->request->getVar('hargaSatuan'),
+                'hargaPesanan' => $this->request->getVar('hargaSatuan'),
                 'keterangan' => $this->request->getVar('keterangan')
             ];
             if (!$this->PesananModel->save($simpanPesanan)) :
@@ -119,7 +119,7 @@ class Transaksi extends BaseController
             endif;
             // $id$this->PesananModel->insertID
             $data += [
-                "listPesanan" => $this->PesananModel->where('transaksiId', $idTransaksi)->findAll()
+                "listPesanan" => $this->PesananModel->where('transaksiId', $idTransaksi)->pesananAll()
             ];
 
 
@@ -135,6 +135,17 @@ class Transaksi extends BaseController
         echo view('home/header', $data);
         echo view('transaksi/addPesanan', $data);
         echo view('home/footer');
+    }
+
+    public function hapusPesanan($idPesanan, $idTransaksi)
+    {
+        // dd($idTransaksi, $idPesanan);
+        if ($this->PesananModel->delete($idPesanan)) :
+            echo "data berhasil dihapus";
+            return redirect()->to(base_url('transaksi/addpesanan') . '/' . $idTransaksi);
+        else :
+            echo "data gagal dihapus";
+        endif;
     }
 
 

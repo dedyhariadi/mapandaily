@@ -44,7 +44,7 @@
                                             <td class="text-right">
                                                 <?php
                                                 helper('fungsiku');
-                                                echo rupiah($listBarang['harga']);
+                                                echo rupiah($listBarang['hargaBarang']);
                                                 ?>
                                             </td>
                                             <td class="text-center">

@@ -87,13 +87,13 @@
                                                             <?= $nomor + 1; ?>
                                                         </td>
                                                         <td class="text-left">
-                                                            <?= $daftarPesanan['barangId']; ?>
+                                                            <?= $daftarPesanan['namaBarang']; ?>
                                                         </td>
                                                         <td>
                                                             <?= $daftarPesanan['jumlah']; ?>
                                                         </td>
                                                         <td>
-                                                            <?= $daftarPesanan['harga']; ?>
+                                                            <?= $daftarPesanan['hargaPesanan']; ?>
 
                                                         </td>
                                                         <td>
@@ -104,8 +104,7 @@
                                                         </td>
 
                                                         <td class="text-center">
-
-                                                            <a href=""> <i class=" material-icons">delete</i><a>
+                                                            <a href="<?= base_url('transaksi/hapusPesanan') . '/' . $daftarPesanan['idPesanan'] . '/' . $daftarPesanan['transaksiId']; ?>"> <i class=" material-icons">delete</i><a>
                                                         </td>
 
                                                     </tr>
@@ -130,7 +129,7 @@
                                                             <?php
                                                             foreach ($listBarang as $no => $barangAll) :
                                                             ?>
-                                                                <option value="<?= $barangAll['idBarang']; ?>"><?= $barangAll['namaBarang'];  ?>&nbsp||&nbsp <?= rupiah($barangAll['harga']);  ?></option>
+                                                                <option value="<?= $barangAll['idBarang']; ?>"><?= $barangAll['namaBarang'];  ?>&nbsp||&nbsp <?= rupiah($barangAll['hargaBarang']);  ?></option>
                                                             <?php
                                                             endforeach;
                                                             ?>
