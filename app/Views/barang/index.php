@@ -85,7 +85,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="bmd-label-floating">Harga</label>
-                                    <input type="text" name="harga" autocomplete="off" value="<?= $barangPilih != '' ? $barangPilih['harga'] : ''; ?>" class="form-control">
+                                    <input type="text" name="hargaBarang" autocomplete="off" value="<?= $barangPilih != '' ? $barangPilih['hargaBarang'] : ''; ?>" class="form-control">
                                 </div>
                             </div>
                             <div class="col">

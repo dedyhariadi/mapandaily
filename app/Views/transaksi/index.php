@@ -27,11 +27,9 @@
                                         Pelanggan
                                     </th>
                                     <th>
-                                        Total Tagihan
+                                        Kurang
                                     </th>
-                                    <th>
-                                        Uang Muka
-                                    </th>
+
                                     <th>
                                         Status Pesanan
                                     </th>
@@ -62,12 +60,10 @@
                                             <td>
                                                 <?= $listTransaksi['namaPelanggan']; ?>
                                             </td>
-                                            <td>
-                                                Total
+                                            <td class="text-right">
+                                                <?= "Rp " . rupiah($listTransaksi['hargaTotal'] - $listTransaksi['uangMuka']); ?>
                                             </td>
-                                            <td>
-                                                <?= "Rp " . rupiah($listTransaksi['uangMuka']); ?>
-                                            </td>
+
                                             <td class="text-center">
                                                 <h4> <span class="badge badge-danger"><?= $listTransaksi['namaStatusPesanan']; ?></span></h4>
                                             </td>
@@ -77,7 +73,7 @@
 
                                                 <a href="<?= base_url('transaksi/hapus') . '/' . $listTransaksi['idTransaksi']; ?>" <i class=" material-icons">delete</i><a>
 
-                                                        <a href="<?= base_url('transaksi/index') . '/' . $listTransaksi['idTransaksi']; ?>" <i class=" material-icons">edit</i>
+                                                        <a href="<?= base_url('transaksi/addpesanan') . '?idTransaksi=' . $listTransaksi['idTransaksi']; ?>" <i class=" material-icons">edit</i>
                                                             <a>
 
                                                                 <!-- <i class="material-icons">edit</i> -->

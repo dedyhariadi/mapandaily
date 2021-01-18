@@ -9,7 +9,7 @@ class PesananModel extends Model
 
     protected $table = "pesanan";
     protected $primaryKey = "idPesanan";
-    protected $allowedFields = ['transaksiId', 'barangId', 'jumlah', 'harga', 'keterangan'];
+    protected $allowedFields = ['transaksiId', 'barangId', 'jumlah', 'hargaPesanan', 'keterangan'];
 
     public function pesananAll()
     {

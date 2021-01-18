@@ -14,20 +14,21 @@ class Barang extends BaseController
 
 	public function index($idBarang = '')
 	{
-		helper('form');
 
 		if ($this->request->getVar()) :
 			$simpan = [
 				'idBarang' => $idBarang != '' ? $idBarang : '',
 				"namaBarang" => $this->request->getVar('namaBarang'),
-				"harga" => $this->request->getVar('harga')
+				"hargaBarang" => $this->request->getVar('hargaBarang')
 			];
 
-			// d($simpan);
-			$this->BarangModel->save($simpan);
+			if (!$this->BarangModel->save($simpan)) :
+				echo "gagal menyimpan";
+				die;
+			endif;
+
 			$idBarang = '';
 		endif;
-		// $data['barangAll'] = $this->BarangModel->findAll();
 
 		$data = [
 			'aktif' => "produk",
@@ -49,13 +50,5 @@ class Barang extends BaseController
 		else :
 			echo "data gagal dihapus";
 		endif;
-		// $data['aktif'] = "produk";
-		// $data['barangAll'] = $this->BarangModel->findAll();
-		// echo view('home/header', $data);
-		// echo view('barang/tambah', $data);
-		// echo view('home/footer');
 	}
-
-	//--------------------------------------------------------------------
-
 }

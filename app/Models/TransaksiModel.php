@@ -13,15 +13,14 @@ class TransaksiModel extends Model
 
     protected $validationRules    = [
         'noNota'     => 'required|min_length[3]',
-        // 'email'        => 'required|valid_email|is_unique[users.email]',
-        // 'password'     => 'required|min_length[8]',
-        // 'pass_confirm' => 'required_with[password]|matches[password]'
+        'tglTerima' => 'required',
+        'tglSelesai' => 'required',
     ];
 
     protected $validationMessages = [
         'noNota'        => [
             'required' => 'Sorry. nomor Nota harus diisi, tidak boleh kosong.',
-            'min_length' => 'maaf kurang panjang.'
+            'min_length' => 'maaf kurang panjang Nomor Nota.'
         ]
     ];
 
@@ -39,5 +38,16 @@ class TransaksiModel extends Model
         return $this->join('pelanggan', 'pelanggan.idPelanggan=transaksi.pelangganId', 'right')
             ->join('statusPesanan', 'statusPesanan.idStatusPesanan=transaksi.statusPesananId')
             ->find($idTransaksi);
+    }
+
+    public function transaksiPesananAll()
+    {
+        return $this->join('pesanan', 'transaksi.idTransaksi=pesanan.transaksiId', 'left')
+            ->join('pelanggan', 'pelanggan.idPelanggan=transaksi.pelangganId', 'right')
+            ->join('statusPesanan', 'statusPesanan.idStatusPesanan=transaksi.statusPesananId')
+            ->select('*')
+            ->selectSum('hargaPesanan', 'hargaTotal')
+            ->groupBy('transaksi.idTransaksi')
+            ->findAll();
     }
 }

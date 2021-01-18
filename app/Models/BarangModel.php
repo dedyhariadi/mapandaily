@@ -9,7 +9,7 @@ class BarangModel extends Model
 
     protected $table = "barang";
     protected $primaryKey = "idBarang";
-    protected $allowedFields = ['namaBarang', 'harga'];
+    protected $allowedFields = ['namaBarang', 'hargaBarang'];
 
     // public function banyakMaterial($idMutasiBarang)
     // {

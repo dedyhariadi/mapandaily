@@ -57,13 +57,13 @@
                                             <th>
                                                 No
                                             </th>
-                                            <th style="width:40%">
+                                            <th style="width:35%">
                                                 Barang
                                             </th>
-                                            <th>
+                                            <th style="width:5%">
                                                 Banyak
                                             </th>
-                                            <th>
+                                            <th style="width:15%">
                                                 Harga
                                             </th>
                                             <th>
@@ -75,11 +75,12 @@
                                             <th>
                                                 Action
                                             </th>
-
                                         </thead>
                                         <tbody>
                                             <?php
                                             if (isset($listPesanan)) :
+                                                // $total = 0;
+                                                // $jumlah = 0;
                                                 foreach ($listPesanan as $nomor => $daftarPesanan) :
                                             ?>
                                                     <tr>
@@ -89,31 +90,64 @@
                                                         <td class="text-left">
                                                             <?= $daftarPesanan['namaBarang']; ?>
                                                         </td>
-                                                        <td>
-                                                            <?= $daftarPesanan['jumlah']; ?>
+                                                        <td class="text-right">
+                                                            <?= $daftarPesanan['jumlah'] . " Pcs"; ?>
                                                         </td>
-                                                        <td>
-                                                            <?= $daftarPesanan['hargaPesanan']; ?>
-
+                                                        <td class="text-right">
+                                                            <?= rupiah($daftarPesanan['hargaPesanan']); ?>
                                                         </td>
-                                                        <td>
+                                                        <td class="text-right">
+                                                            <?php
+                                                            echo rupiah((int)$daftarPesanan['hargaPesanan'] * (int)$daftarPesanan['jumlah']);
+                                                            $jumlah[] = (int)$daftarPesanan['hargaPesanan'] * (int)$daftarPesanan['jumlah'];
+                                                            ?>
+                                                        </td>
+                                                        <td class="text-left">
                                                             <?= $daftarPesanan['keterangan']; ?>
-                                                        </td>
-                                                        <td>
 
                                                         </td>
 
                                                         <td class="text-center">
                                                             <a href="<?= base_url('transaksi/hapusPesanan') . '/' . $daftarPesanan['idPesanan'] . '/' . $daftarPesanan['transaksiId']; ?>"> <i class=" material-icons">delete</i><a>
                                                         </td>
-
                                                     </tr>
                                             <?php
+                                                // $jumlah;
                                                 endforeach;
                                             endif;
                                             ?>
+                                            <tr>
+                                                <td colspan="4" class="text-right font-weight-bold">
+                                                    Jumlah
+                                                </td>
+                                                <td class="text-right font-weight-bold">
+                                                    <?php
+                                                    echo isset($jumlah) ? rupiah(array_sum($jumlah)) : '';
+                                                    ?>
+                                                </td>
+                                                <td colspan="2"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4" class="text-right font-weight-bold">
+                                                    Uang Muka
+                                                </td>
+                                                <td class="text-right font-weight-bold">
+                                                    <?php
+                                                    // $uangMuka=
+                                                    echo rupiah($tampilTransaksi['uangMuka']); ?>
+                                                </td>
+                                                <td colspan="2"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4" class="text-right font-weight-bold">
+                                                    Sisa
+                                                </td>
+                                                <td class="text-right font-weight-bold">
+                                                    <?= isset($jumlah) ? rupiah(array_sum($jumlah) - $tampilTransaksi['uangMuka']) : ''; ?>
+                                                </td>
+                                                <td colspan="2"></td>
+                                            </tr>
                                             <tr class="mt-5 py-5">
-
                                                 <td colspan="7">
                                                     <div class="form-group">
                                                     </div>
@@ -125,7 +159,6 @@
                                                 <td class="text-left">
                                                     <div class="form-group">
                                                         <select class="menuketik" name="idBarang" id="barang">
-
                                                             <?php
                                                             foreach ($listBarang as $no => $barangAll) :
                                                             ?>
@@ -156,12 +189,9 @@
                                                         <input type="text" name="keterangan" autocomplete="off" class="form-control">
                                                     </div>
                                                 </td>
-
-
                                             </tr>
                                         </tbody>
                                     </table>
-
                                 </div>
                             </div>
 
