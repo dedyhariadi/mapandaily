@@ -61,9 +61,12 @@
                                                 <?= $listTransaksi['namaPelanggan']; ?>
                                             </td>
                                             <td class="text-right">
-                                                <?= "Rp " . rupiah($listTransaksi['hargaTotal'] - $listTransaksi['uangMuka']); ?>
+                                                <?php
+                                                echo 'harga Total : ' . $listTransaksi['hargaTotal'];
+                                                echo 'uang Muka : ' . $listTransaksi['uangMuka'];
+                                                $sisa = $listTransaksi['hargaTotal'] - $listTransaksi['uangMuka'];
+                                                echo "Rp " . rupiah(($listTransaksi['hargaTotal'] * $listTransaksi['jumlah']) - $listTransaksi['uangMuka']); ?>
                                             </td>
-
                                             <td class="text-center">
                                                 <h4> <span class="badge badge-danger"><?= $listTransaksi['namaStatusPesanan']; ?></span></h4>
                                             </td>

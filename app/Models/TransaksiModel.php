@@ -45,8 +45,8 @@ class TransaksiModel extends Model
         return $this->join('pesanan', 'transaksi.idTransaksi=pesanan.transaksiId', 'left')
             ->join('pelanggan', 'pelanggan.idPelanggan=transaksi.pelangganId', 'right')
             ->join('statusPesanan', 'statusPesanan.idStatusPesanan=transaksi.statusPesananId')
-            ->select('*')
-            ->selectSum('hargaPesanan', 'hargaTotal')
+            ->select('pesanan.hargaPesanan * pesanan.jumlah')
+            ->selectSum('jmlTiapBarang', 'hargaTotal')
             ->groupBy('transaksi.idTransaksi')
             ->findAll();
     }
