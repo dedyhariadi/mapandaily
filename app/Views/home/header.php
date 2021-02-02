@@ -109,7 +109,7 @@ The above copyright notice and this permission notice shall be included in all c
             <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="javascript:;">Jahitan kami tidak hanya bikin anda jadi <span class="text-warning">TENTARA </span> tapi jadi <span class="text-warning">KSATRIA</span></a>
+                        <a class="navbar-brand" href="javascript:;">Bukan <span class="text-warning"> Seragam </span>Pabrikan</a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="sr-only">Toggle navigation</span>

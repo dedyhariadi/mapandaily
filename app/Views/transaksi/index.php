@@ -31,7 +31,7 @@
                                     </th>
 
                                     <th>
-                                        Status Pesanan
+                                        Status
                                     </th>
                                     <th>
                                         Action
@@ -41,7 +41,7 @@
                                 <tbody>
 
                                     <?php
-                                    helper("fungsiku");
+                                    // helper("fungsiku");
                                     foreach ($transaksiAll as $nomor => $listTransaksi) :
                                     ?>
                                         <tr>
@@ -52,25 +52,22 @@
                                                 <?= $listTransaksi['noNota']; ?>
                                             </td>
                                             <td>
-                                                <?= tglTampil($listTransaksi['tglTerima']); ?>
+                                                <?= is_null($listTransaksi['tglTerima']) ? '':tglTampil($listTransaksi['tglTerima']); ?>
                                             </td>
                                             <td>
-                                                <?= tglTampil($listTransaksi['tglSelesai']); ?>
+                                                <?= is_null($listTransaksi['tglSelesai']) ? '': tglTampil($listTransaksi['tglSelesai']); ?>
                                             </td>
                                             <td>
                                                 <?= $listTransaksi['namaPelanggan']; ?>
                                             </td>
                                             <td class="text-right">
                                                 <?php
-                                                echo 'harga Total : ' . $listTransaksi['hargaTotal'];
-                                                echo 'uang Muka : ' . $listTransaksi['uangMuka'];
-                                                $sisa = $listTransaksi['hargaTotal'] - $listTransaksi['uangMuka'];
-                                                echo "Rp " . rupiah(($listTransaksi['hargaTotal'] * $listTransaksi['jumlah']) - $listTransaksi['uangMuka']); ?>
+                                                echo "Rp " . rupiah($listTransaksi['hargaTotal'] - $listTransaksi['uangMuka']);
+                                                 ?>
                                             </td>
                                             <td class="text-center">
                                                 <h4> <span class="badge badge-danger"><?= $listTransaksi['namaStatusPesanan']; ?></span></h4>
                                             </td>
-
 
                                             <td class="text-center">
 
