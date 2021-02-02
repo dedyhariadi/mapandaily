@@ -42,12 +42,14 @@ class TransaksiModel extends Model
 
     public function transaksiPesananAll()
     {
-        return $this->join('pesanan', 'transaksi.idTransaksi=pesanan.transaksiId', 'left')
-            ->join('pelanggan', 'pelanggan.idPelanggan=transaksi.pelangganId', 'right')
-            ->join('statusPesanan', 'statusPesanan.idStatusPesanan=transaksi.statusPesananId')
-            ->select('pesanan.hargaPesanan * pesanan.jumlah')
-            ->selectSum('jmlTiapBarang', 'hargaTotal')
+        return $this->join('pesanan', 'transaksi.idTransaksi=pesanan.transaksiId', 'right')
+            ->join('pelanggan', 'pelanggan.idPelanggan=transaksi.pelangganId', 'left')
+            // ->join('statusPesanan', 'statusPesanan.idStatusPesanan=transaksi.statusPesananId')
+            ->select('*,pesanan.hargaPesanan * pesanan.jumlah as jmlTiapBarang',false)
+            // ->select('*')
+            // ->selectSum('jmlTiapBarang', 'hargaTotal')
             ->groupBy('transaksi.idTransaksi')
             ->findAll();
+            // ->getCompiledSelect();
     }
 }

@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Models\PelangganModel;
 
+
+
 class Pelanggan extends BaseController
 {
 
@@ -39,6 +41,7 @@ class Pelanggan extends BaseController
         echo view('home/footer');
     }
 
+    
     public function hapus($idPelanggan = '')
     {
         echo ($idPelanggan) ? $idPelanggan : '';

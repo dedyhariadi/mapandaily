@@ -32,12 +32,13 @@ class Transaksi extends BaseController
             ];
             $this->TransaksiModel->save($simpan);
         endif;
-
+// die;
         $data = [
             'aktif' => "transaksi",
             // 'transaksiAll' => $this->TransaksiModel->transaksiAll(),
             'transaksiAll' => $this->TransaksiModel->transaksiPesananAll()
         ];
+       d($data);
         echo view('home/header', $data);
         echo view('transaksi/index', $data);
         echo view('home/footer');
