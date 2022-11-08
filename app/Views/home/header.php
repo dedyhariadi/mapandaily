@@ -96,7 +96,7 @@ The above copyright notice and this permission notice shall be included in all c
                         </a>
                     </li>
                     <li class="nav-item <?= $aktif == 'laporan' ? 'active' : ''; ?>">
-                        <a class="nav-link" href="./rtl.html">
+                        <a class="nav-link" href="<?= base_url('laporan');?>">
                             <i class="material-icons">content_paste</i>
                             <p>Laporan</p>
                         </a>

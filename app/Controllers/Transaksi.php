@@ -104,6 +104,7 @@ class Transaksi extends BaseController
                 'aktif' => "transaksi",
                 'transaksiAll' => $this->TransaksiModel->transaksiAllbyId($idTransaksi)
             ];
+
             $simpanPesanan = [
                 'transaksiId' => $idTransaksi,
                 'barangId' => $this->request->getVar('idBarang'),
@@ -111,6 +112,7 @@ class Transaksi extends BaseController
                 'hargaPesanan' => $this->request->getVar('hargaSatuan'),
                 'keterangan' => $this->request->getVar('keterangan')
             ];
+            
             if (!$this->PesananModel->save($simpanPesanan)) :
                 echo "gagal menyimpan";
                 die;
